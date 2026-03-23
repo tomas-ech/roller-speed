@@ -15,12 +15,21 @@ import org.springframework.web.bind.annotation.RestController;
 import com.school.roller_speed.model.StudentModel;
 import com.school.roller_speed.service.StudentService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+
 @RestController
 @RequestMapping("api/students")
 public class StudentController {
     @Autowired
     private StudentService studentService;
 
+    @Operation(summary = "Obtener todos los estudiantes", description = "Retorna una lista completa de los alumnos registrados")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Operación exitosa"),
+            @ApiResponse(responseCode = "500", description = "Error interno del servidor")
+    })
     @GetMapping
     public List<StudentModel> list() {
         return studentService.getAllStudents();
@@ -43,5 +52,5 @@ public class StudentController {
         studentService.deleteStudent(id);
         return ResponseEntity.noContent().build();
     }
-    
+
 }
