@@ -16,40 +16,10 @@ public interface UserRepository extends JpaRepository<UserModel, Long> {
         throw new UnsupportedOperationException("Unimplemented method 'getById'");
     }
 
-    @Override
-    default UserModel getOne(Long arg0) {
-        throw new UnsupportedOperationException("Unimplemented method 'getOne'");
-    }
-
-    @Override
-    default UserModel getReferenceById(Long id) {
-        throw new UnsupportedOperationException("Unimplemented method 'getReferenceById'");
-    }
-
 
     @Override
     default List<UserModel> findAll() {
         throw new UnsupportedOperationException("Unimplemented method 'findAll'");
-    }
-
-    @Override
-    default List<UserModel> findAllById(Iterable<Long> ids) {
-        throw new UnsupportedOperationException("Unimplemented method 'findAllById'");
-    }
-
-    @Override
-    default <S extends UserModel> List<S> saveAll(Iterable<S> entities) {
-        throw new UnsupportedOperationException("Unimplemented method 'saveAll'");
-    }
-
-    @Override
-    default void delete(UserModel entity) {
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
-    }
-
-    @Override
-    default void deleteAll() {
-        throw new UnsupportedOperationException("Unimplemented method 'deleteAll'");
     }
 
     @Override
