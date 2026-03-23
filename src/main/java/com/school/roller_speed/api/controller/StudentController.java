@@ -18,9 +18,11 @@ import com.school.roller_speed.service.StudentService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @RequestMapping("api/students")
+@Tag(name = "Students")
 public class StudentController {
     @Autowired
     private StudentService studentService;
