@@ -1,5 +1,6 @@
 package com.school.roller_speed.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,10 +22,19 @@ public class StudentModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(length = 100)
     private String name;
+
+    @Column(length = 100)
     private String birthDate;
+
+    @Column(length = 100)
     private String level;
+
+    @Column(length = 100)
     private String emergencyName;
+
+    @Column(length = 100)
     private String emergencyPhone;
 
     @OneToOne

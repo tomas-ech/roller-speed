@@ -27,19 +27,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:if="${estudiantes.empty}">
+                        <!-- <tr th:if="${students.empty}">
                             <td colspan="5" class="text-center py-4 text-muted">No hay estudiantes registrados actualmente.</td>
-                        </tr>
-                        <tr th:each="estudiante : ${estudiantes}">
-                            <td th:text="${estudiante.id}">1</td>
-                            <td th:text="${estudiante.nombre}" class="fw-bold">Juan Pérez</td>
+                        </tr> -->
+                        <tr th:each="student : ${students}">
+                            <td th:text="${student.id}">1</td>
+                            <td th:text="${student.name}" class="fw-bold">Nombre estudiante</td>
                             <td>
-                                <span th:text="${estudiante.nivel}" 
-                                      th:classappend="${estudiante.nivel == 'Avanzado' ? 'badge bg-danger' : (estudiante.nivel == 'Intermedio' ? 'badge bg-warning text-dark' : 'badge bg-info text-dark')}">
+                                <span th:text="${student.level}" 
+                                      th:classappend="${student.level == 3 ? 'badge bg-danger' : (student.level == 2 ? 'badge bg-warning text-dark' : 'badge bg-info text-dark')}">
                                     Nivel
                                 </span>
                             </td>
-                            <td th:text="${estudiante.contactoEmergencia}">300...</td>
+                            <td th:text="${student.emergencyPhone}">300...</td>
                             <td>
                                 <button class="btn btn-sm btn-outline-primary">Editar</button>
                                 <button class="btn btn-sm btn-outline-danger">Eliminar</button>
