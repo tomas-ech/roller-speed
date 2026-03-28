@@ -8,24 +8,15 @@ import org.springframework.stereotype.Service;
 
 import com.school.roller_speed.model.StudentModel;
 import com.school.roller_speed.repository.StudentRepository;
-import com.school.roller_speed.repository.UserRepository;
 
-import jakarta.transaction.Transactional;
 
 @Service
 public class StudentService {
     @Autowired
     private StudentRepository studentRepository;
-    
-    @Autowired
-    private UserRepository userRepository;
 
-    @Transactional
-    public StudentModel createStudent(StudentModel student) {
-        if (student.getUser() != null) {
-            userRepository.save(student.getUser());
-        }
-        return studentRepository.save(student);
+    public StudentModel createStudent(StudentModel student){
+       return studentRepository.save(student);
     }
 
     public List<StudentModel> getAllStudents() {
