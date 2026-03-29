@@ -8,28 +8,42 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.school.roller_speed.model.InstructorModel;
 import com.school.roller_speed.model.StudentModel;
 import com.school.roller_speed.service.StudentService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Controller
 @RequestMapping("/register")
+@Tag(name = "Registros")
 public class registerController {
 
-     @Autowired
+    @Autowired
     private StudentService studentService;
 
     @GetMapping("/student")
+    @Operation(summary = "Formulario para crear un estudiante")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Operación exitosa"),
+            @ApiResponse(responseCode = "500", description = "Error interno del servidor")
+    })
     public String formStudent(Model model) {
         model.addAttribute("student", new StudentModel());
         return "register/student";
     }
 
     @GetMapping("/instructor")
-    public String formInstructor() {
+    @Operation(summary = "Formulario para crear un instructor")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Operación exitosa"),
+            @ApiResponse(responseCode = "500", description = "Error interno del servidor")
+    })
+    public String formInstructor(Model model) {
+        model.addAttribute("instructor", new InstructorModel());
         return "register/instructor";
     }
 
@@ -39,10 +53,9 @@ public class registerController {
             @ApiResponse(responseCode = "200", description = "Operación exitosa"),
             @ApiResponse(responseCode = "500", description = "Error interno del servidor")
     })
-    public String createStudent(@ModelAttribute StudentModel student){
+    public String createStudent(@ModelAttribute StudentModel student) {
         studentService.createStudent(student);
-       return "redirect:/lists/students";
+        return "redirect:/lists/students";
     }
 
-    
 }
