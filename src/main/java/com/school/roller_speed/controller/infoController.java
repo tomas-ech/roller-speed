@@ -4,18 +4,32 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+
 @Controller
 @RequestMapping("/information")
 public class infoController {
 
     @GetMapping("/services")
+    @Operation(summary = "Página para mostrar los servicios que ofrece la empresa")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Operación exitosa"),
+            @ApiResponse(responseCode = "500", description = "Error interno del servidor")
+    })
     public String services() {
         return "information/services";
     }
 
     @GetMapping("/events")
+    @Operation(summary = "Página para mostrar los eventos de la empresa")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Operación exitosa"),
+            @ApiResponse(responseCode = "500", description = "Error interno del servidor")
+    })
     public String events() {
-        return "information/events"; 
+        return "information/events";
     }
-    
+
 }
